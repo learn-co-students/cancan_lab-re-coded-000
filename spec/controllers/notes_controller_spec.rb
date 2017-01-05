@@ -19,7 +19,7 @@ RSpec.describe NotesController, type: :controller do
       assert note.user = alice
     end
   end
-
+ 
   describe 'post update' do
     it "can update your own notes" do
       alice, beth = users(:alice), users(:beth)
