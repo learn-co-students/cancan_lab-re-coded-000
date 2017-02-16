@@ -1,0 +1,6 @@
+<p><%= note.content %></p>
+<p><%= note.user.name%></p>
+
+  <% if can? :update, note %>
+    <%= link_to 'edit', edit_note_path(note) %>
+  <% end %>
