@@ -9,9 +9,9 @@ class NotesController < ApplicationController
 		if ! session[:user_id] || session[:user_id] ==""
 			redirect_to "/"
 		else
-		  note=Note.create(set_params)
+		  note=Note.create(note_params)
 		  note.user_id=current_user.id
-		  #note.readers << current_user
+		  
 		  note.save
 
 		  redirect_to("/")
@@ -25,14 +25,13 @@ class NotesController < ApplicationController
         
     end
     def update
-    	#raise params.inspect
-    	@note.update(set_params)
+    	@note.update(note_params)
     	@note.visible_to= params[:note][:visible_to]
     	@note.save
     	redirect_to("/")
     end
 	private
-	def set_params
+	def note_params
 		params.require(:note).permit(:content,:visible_to)
 	end
 end
