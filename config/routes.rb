@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  root 'application#index'
+  resources :users, only: [:create]
+  get "/login" , to: "sessions#new"
+  post "/sessions/login" , to: "sessions#login"
+  post "/logout" , to: "sessions#logout"
+  resources :notes , only: [:index,:new,:create,:edit,:update,:destroy,:show]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
